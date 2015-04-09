@@ -37,8 +37,8 @@ Option  | Type | Default | Description
 `propertyNames` | `string` or `array` | `` | name or array of names of the properties of `this.options` that are to be saved
 `storageId` | `string` | `` | The name of the [localStorage/sessionStorage](http://www.w3schools.com/html/html5_webstorage.asp) where the options are saved
 `inSession` | `boolean` | `false` | If true the options are saved in a [sessionStorage](http://www.w3schools.com/html/html5_webstorage.asp) instead of a [localStorage](http://www.w3schools.com/html/html5_webstorage.asp) 
-`afterLoad` | `function` | `null` | Function to be called after the optiona are loaded
-`beforeSave` | `function` | `null` | Function to be called before the optiona are saved
+`afterLoad` | `function` | `null` | Function to be called after the options are loaded
+`beforeSave` | `function` | `null` | Function to be called before the options are saved
 `context` | `object` | `this` | Context for the `afterLoad` and `beforeSave` functions
 `id` | `string` | `null` | Id of the optionsStorage (NOT USED)
 `name` | `string` | `null` | Name of the optionsStorage (NOT USED)
@@ -52,9 +52,9 @@ The following methods are added to the object-class
     optionsStorage_load( storageId, inSession, afterLoad, context )
     optionsStorage_save( storageId, inSession, beforeSave, context )
 
-`storageId`, `inSession`, `afterLoad`, `beforeSave`, and `context` are all optional provided that they was set in osOptions
+`storageId`, `inSession`, `afterLoad`, `beforeSave`, and `context` are all optional provided that they ware set in `osOptions`
  
-There are also a short-named version of this methods
+There is also a short-named version of this methods
 
     osAdd( propertyNames )
     osRemove( propertyName )
