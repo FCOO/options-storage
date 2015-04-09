@@ -64,11 +64,13 @@
 
 			//_optionsStorage_copyOptions( fromOptions, toOptions )
 			_optionsStorage_copyOptions: function _optionsStorage_copyOptions( fromOptions, toOptions ){
-				var i, propertyName, length = this.optionsStorage.propertyNames.length;
-				for (i=0; i<length; i++ ){
-					propertyName = this.optionsStorage.propertyNames[i];
-					if (fromOptions.hasOwnProperty(propertyName) ){
-					  toOptions[propertyName] = fromOptions[propertyName]; 
+				if (fromOptions && toOptions){
+					var i, propertyName, length = this.optionsStorage.propertyNames.length;
+					for (i=0; i<length; i++ ){
+						propertyName = this.optionsStorage.propertyNames[i];
+						if (fromOptions.hasOwnProperty(propertyName) ){
+						  toOptions[propertyName] = fromOptions[propertyName]; 
+						}
 					}
 				}
 			},
@@ -91,7 +93,7 @@
 			optionsStorage_load: function optionsStorage_load( storageId, inSession, afterLoad, context ){
 				storageId = this._optionsStorage_getStorageId( storageId );
 				var store = this._optionsStorage_getStore( inSession ),
-						loadedOptions =  JSON.parse( store.getItem(storageId) );
+						loadedOptions =  JSON.parse( store.getItem(storageId) ); 
 				
 				this._optionsStorage_copyOptions( loadedOptions, this.options );
 				this._optionsStorage_apply( afterLoad || this.optionsStorage.afterLoad, context );
