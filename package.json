@@ -1,0 +1,43 @@
+{
+  "name": "options-storage",
+  "version": "0.0.1",
+  "description": "A mixin to load and save parts of the object's options in localStorage or sessionStorage",
+  "main": "dist/options-storage.min.js",
+	"author": "Niels Holt <niels@steenbuchholt.dk>",
+	"contributors": [{
+		"name": "Foo Bar",
+		"email": "foo.bar@example.com"
+		}
+	],
+  "license": "MIT",
+  "devDependencies": {
+    "jshint": "latest",
+    "uglifyjs": "latest"
+  },
+  "jshintConfig": {
+    "globals": {
+      "console": false,
+      "DEBUG": false,
+			"document": false,
+			"sessionStorage": false,
+			"localStorage": false,
+			"alert"		: false
+    },
+    "undef": true,
+    "unused": true
+  },
+  "scripts": {
+    "lint": "jshint src/options-storage.js",
+		"build:js": "uglifyjs src/options-storage.js -c -m -o dist/options-storage.min.js",
+    "build": "npm run build:js",
+    "prebuild:js": "npm run lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NielsHolt/options-storage.git"
+  },
+  "bugs": {
+    "url": "https://github.com/NielsHolt/options-storage/issues"
+  },
+  "homepage": "https://github.com/NielsHolt/options-storage"
+}

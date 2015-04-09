@@ -1,0 +1,21 @@
+{
+  "name": "options-storage",
+  "version": "1.0.0",
+  "homepage": "https://github.com/NielsHolt/PACKAGENAME",
+  "authors": [
+    "Niels Holt <niels@steenbuchholt.dk>"
+  ],
+  "description": "A mixin to load and save parts of the object's options in localStorage or sessionStorage",
+  "main": "dist/options-storage.min.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "moduleType": [
+    "es6"
+  ]
+}
