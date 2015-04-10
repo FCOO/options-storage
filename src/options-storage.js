@@ -22,7 +22,7 @@
 					storageId			:	osOptions.storageId || '',
 					inSession			: osOptions.inSession || false,
 					afterLoad			: osOptions.afterLoad || null,
-					beforeSave		: osOptions.beforeLoad || null,
+					beforeSave		: osOptions.beforeSave || null,
 					context				: osOptions.context || this
 				};
 				this.osAdd( osOptions.propertyNames );
