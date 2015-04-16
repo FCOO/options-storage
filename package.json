@@ -1,6 +1,6 @@
 {
   "name": "options-storage",
-  "version": "0.0.1",
+  "version": "1.0.5",
   "description": "A mixin to load and save parts of the object's options in localStorage or sessionStorage",
   "main": "dist/options-storage.min.js",
 	"author": "Niels Holt <niels@steenbuchholt.dk>",
