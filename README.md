@@ -13,7 +13,7 @@ Use `optionsStorage_initialize( osOptions )` in the constructor of a class to in
 	//Create your own class
 	function MyModule( options ) {
 		this.options = options;
-
+	
 		this.optionsStorage_initialize( {
 			optionNames: ['optionA', 'optionB'], 
 			storageId: 'com.myWebsite.settings.someName'
@@ -23,7 +23,7 @@ Use `optionsStorage_initialize( osOptions )` in the constructor of a class to in
     	  console.log('myMethod');
 	    };
 	  }
- 
+  
 	// Extend the constructor with the options-storage mixin (using jQuery)
 	$.extend( MyModule.prototype, OptionsStorage );
 
@@ -62,17 +62,7 @@ There is also a short-named version of this methods
     osLoad( storageId, inSession, afterLoad, context )
     osSave( storageId, inSession, beforeSave, context )
 
-| x | Y |    
-|---|:--:|
-| test | tetsdfjsgfjsjf jsdfj sdghf |
-|fdff|dkfsdkf|
-
-| column | column | column|
-|:--------|:--------:|---:|
-|left|center|right|
-|kkshdfksjhfd|sdfsdfsdf|sdfsdfsdfsdfsfsdf|
-[TOC]
-
+    
 
 ## Operating instructions
 	var myObject = new MyModule( 
