@@ -4,6 +4,7 @@
 
 ## Description
 This package contains tree different object-classes
+
 1. **`OptionsStorage`** - A mixin to load and save parts of the a object's `options` in localStorage
 2. **`StateStorage`** - descending from `OptionsStorage` but it load and save the 'state' of DOM elements eq. if a sub-menu is open or closed
 3. **`ApplicationStorage`** - a collections of `OptionsStorage` and `StateStorage` that can be loaded and saved together 

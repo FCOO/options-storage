@@ -286,7 +286,7 @@
 
 	function OptionsStorage( object, options ) {
 		this.plugin_count = plugin_count;
-		this.VERSION = "1.0.0";
+		this.VERSION = "1.0.1";
 
 		//Extend with Lockr
 		$.extend(this, window.Lockr);
@@ -517,7 +517,7 @@
 
 	function StateStorage( options ) {
 		this.plugin_count = plugin_count++;
-		this.VERSION = "1.0.0";
+		this.VERSION = "1.0.1";
 		this.options = {
 			elements			: {},
 			list					: [],
