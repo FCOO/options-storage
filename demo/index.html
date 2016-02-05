@@ -1,0 +1,141 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="da" style="font-size: 100%">
+<head>
+	<title>fcoo.dk - options-storage - Example</title>
+	<meta charset="iso-8859-1" />
+	<meta charset="iso-8859-1" /> <!-- OR "utf-8" -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta http-equiv='x-dns-prefetch-control' content='on'><!-- Hvorfor "on"? -->
+
+<!-- <meta http-equiv="refresh" content="30"> -->
+<!-- <meta name='description' content='150 words'> -->
+<!-- <meta name='subject' content='your website's subject'> -->
+<!-- <meta http-equiv='Expires' content='0'> -->
+	<meta name='copyright' content='FCOO'>
+	<meta name='owner' content='FCOO'>
+
+	<style>
+		.menu li {
+			cursor: default; 
+			background: gray; 
+			padding: 0;
+			margin: 10px;
+			width: 200px;
+		}
+		.menu li p { 
+			display: none; 
+			padding: 0;
+			margin: 0;
+			background: green;
+			height: 20px;
+		}
+		.menu li.isOpen p { display: block; }
+	
+	</style>
+</head>
+
+<body>
+	<h1>Random number = <script>document.write(Math.floor(Math.random()*100000));</script></h1>
+	<h1>OptionsStorage</h1>
+	<input type="checkbox" id="checkbox1"/><label for="checkbox1">Checkbox #1</label><br>
+	<input type="checkbox" id="checkbox2"/><label for="checkbox2">Checkbox #2</label><br>
+	<input type="checkbox" id="checkbox3"/><label for="checkbox3">Checkbox #3</label><br>
+	<input type="checkbox" id="checkbox4"/><label for="checkbox4">Checkbox #4 (reload page if it is changed on save)</label><br>
+	<button onclick="myObject.osLoad()">Load</button>
+	<button onclick="myObject.osSave()">Save</button>
+	<button onclick="myObject.osRemove()">Remove</button>
+
+	
+	<h1>StateStorage</h1>
+	<ui class="menu">
+		<li id="menu1">This is a menu<p>This is a test</p></li>
+		<li id="menu2">This is a menu<p>This is another test</p></li>
+		<li id="menu3">This is a menu<p>This is also another test</p></li>
+	</ul>
+	<button onclick="myStateStorage.load()">Load</button>
+	<button onclick="myStateStorage.save()">Save</button>
+	
+	<h1>ApplicationStorage</h1>
+	<button onclick="myApplicationStorage.load(1)">Load #1</button>
+	<button onclick="myApplicationStorage.save(1, null, {name:'This is #1'})">Save #1</button>
+	<button onclick="myApplicationStorage.remove(1)">Remove #1</button>
+	<br>
+	<button onclick="myApplicationStorage.load(2)">Load #2</button>
+	<button onclick="myApplicationStorage.save(2, {saveState: false}, {name:'This is #2'})">Save #2 (not StateStorage)</button>
+	<button onclick="myApplicationStorage.remove(2)">Remove #2</button>
+	
+
+
+	<script src="bower_components.js"></script>
+	<script src="../src/state-storage.js"></script>
+	<script src="../src/options-storage.js"></script>
+	<script src="../src/application-storage.js"></script>
+	<script>
+		function MyClass(){
+			this.options = {
+				checkbox1: false,
+				checkbox2: false,
+				checkbox3: false,
+				checkbox4: false,
+				someOtherOption	: 123,
+				someOtherOption2: 321
+			}
+		
+			this.afterLoad = function(){ 
+				$("#checkbox1").prop("checked", this.options.checkbox1);
+				$("#checkbox2").prop("checked", this.options.checkbox2);
+				$("#checkbox3").prop("checked", this.options.checkbox3);
+				$("#checkbox4").prop("checked", this.options.checkbox4);
+			},
+
+			this.beforeSave = function(){ 
+				this.options.checkbox1 = $('#checkbox1').prop('checked');
+				this.options.checkbox2 = $('#checkbox2').prop('checked');
+				this.options.checkbox3 = $('#checkbox3').prop('checked');
+				this.options.checkbox4 = $('#checkbox4').prop('checked');
+			}
+
+			window.optionsStorage( this, {
+				id						: 'osDemo',
+				storageId			:	'github.fcoo.optionsStorage.demo', 
+				propertyNames	:	['checkbox1', 'checkbox2', 'checkbox3', 'checkbox4'],
+				autoLoad			: true,
+				autoSave			: true,
+				reloadOnSave	: true,
+				needToReload	: function( diff ){ return diff.checkbox4 !== undefined },
+				afterLoad			: this.afterLoad,
+				beforeSave		: this.beforeSave,
+			}
+			);
+		}
+		var myObject = new MyClass();
+
+		//StateStorage
+		$('li').click( function(){ $(this).toggleClass('isOpen'); });
+
+		var myStateStorage = new StateStorage({ 
+			id				: 'ssDemo',
+			//storageId	:	'github.fcoo.stateStorage.demo'
+		});
+		myStateStorage.addSelector({ 
+			selector: '.menu li',
+			classNames: 'isOpen'
+		});
+
+		//ApplicationStorage
+		myApplicationStorage = new ApplicationStorage({ 
+id: 'THE_APPLICATION',
+			storageId				: 'github.fcoo.applicationStorage.demo',
+			autoLoad				: false,
+			autoSave				: false,
+			//autoSaveOptions	: {saveState: false},
+		});
+
+
+		myApplicationStorage.add( myObject );
+		myApplicationStorage.add( myStateStorage, window.APPLICATION_STORAGE_STATE );
+
+//localStorage.clear();
+	</script>
+</body>
+</html>

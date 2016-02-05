@@ -1,12 +1,25 @@
 {
   "name": "options-storage",
-  "version": "1.0.5",
-  "homepage": "https://github.com/NielsHolt/PACKAGENAME",
+  "version": "1.0.0",
+  "homepage": "https://github.com/FCOO/options-storage",
   "authors": [
-    "Niels Holt <niels@steenbuchholt.dk>"
+    "Niels Holt nho@fcoo.dk"
   ],
   "description": "A mixin to load and save parts of the object's options in localStorage or sessionStorage",
-  "main": "dist/options-storage.min.js",
+  "main": [
+    "dist/options-storage.min.js",
+    "dist/options-storage.min.css"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/FCOO/options-storage.git"
+  },
+  "dependencies": {
+    "jquery": "latest",
+    "lockr": "^0.8.4",
+    "jsondiffpatch": "benjamine/jsondiffpatch#^0.1.38"
+  },
+  "devDependencies": {},
   "license": "MIT",
   "ignore": [
     "**/.*",
