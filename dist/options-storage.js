@@ -286,7 +286,7 @@
 
 	function OptionsStorage( object, options ) {
 		this.plugin_count = plugin_count;
-		this.VERSION = "1.0.2";
+		this.VERSION = "1.0.3";
 
 		//Extend with Lockr
 		$.extend(this, window.Lockr);
@@ -315,8 +315,8 @@
 		//Calling windowLoad and windowUnload when document is ready
 		var THIS = this;
 		$(function() {
-	    $(window).load( $.proxy( THIS.windowLoad, THIS ) );
-	    $(window).unload( $.proxy( THIS.windowUnload, THIS ) );
+	    $(window).on('load',		$.proxy( THIS.windowLoad,		THIS ) );
+	    $(window).on('unload',	$.proxy( THIS.windowUnload, THIS ) );
 		});
 
 
@@ -435,7 +435,7 @@
 
 			//If a version with postfix = 'FORCE' is saved => use it and remove it
 			if (this.exists('FORCE')){
-			  options = this._loadOptions( 'FORCE' ); 
+			  options = this._loadOptions( 'FORCE' );
 				this.remove( 'FORCE' );
 			}
 			else
@@ -472,7 +472,7 @@
 		},
 
 		//windowLoad
-		windowLoad: function(){ 
+		windowLoad: function(){
 			if (this.options.autoLoad || this.exists('FORCE'))
 				this.load();
 		},
@@ -517,7 +517,7 @@
 
 	function StateStorage( options ) {
 		this.plugin_count = plugin_count++;
-		this.VERSION = "1.0.2";
+		this.VERSION = "1.0.3";
 		this.options = {
 			elements			: {},
 			list					: [],
